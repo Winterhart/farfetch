@@ -25,3 +25,10 @@ jobs:
         with:
           go-version: ${{ matrix.go }}
       - run: go build cmd/main.go
+      - uses: actions/checkout@v2
+      - name: Go Vet
+        uses: actions/setup-go@v1
+        with:
+          go-version: ${{ matrix.go }}
+      - run: go vet ./...
+
