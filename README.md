@@ -26,7 +26,7 @@ This library needs three variables to work:
 
 ### How to get the token?
 
-- 
+- https://api.slack.com/authentication/token-types
 
 ### How to get the channel id?
 
