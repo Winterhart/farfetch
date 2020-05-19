@@ -11,13 +11,13 @@ import (
 	"time"
 )
 
-//Farfetch - Send message/Upload file to a slack channel
+//Farfetch - Communicate with a slack channel using a Slack-app
 type Farfetch interface {
 	SendMessage(message string) error
 	UploadFile(pathToFile string) error
 }
 
-//NewFarfetchImpl -
+//NewFarfetchImpl - Constructor that implements the Farfetch API
 func NewFarfetchImpl(hook string, token string, channel string) Farfetch {
 	return &farfetchImpl{
 		hook:    hook,
@@ -30,6 +30,7 @@ type farfetchImpl struct {
 	hook, token, channel string
 }
 
+//SendMessage - This function sends a message to Slack using a web-token.
 func (f *farfetchImpl) SendMessage(message string) (err error) {
 	slackBodyJSON := "{\"text\":\"%v\"}"
 	jsonMessage := fmt.Sprintf(slackBodyJSON, message)
@@ -49,6 +50,7 @@ func (f *farfetchImpl) SendMessage(message string) (err error) {
 	return err
 }
 
+//UploadFile - This function upload a file to Slack using a token and a channel id
 func (f *farfetchImpl) UploadFile(pathToFile string) (err error) {
 	fileName := filepath.Base(pathToFile)
 	url := fmt.Sprintf(
@@ -71,6 +73,7 @@ func (f *farfetchImpl) UploadFile(pathToFile string) (err error) {
 	return err
 }
 
+//generateFileForm - This helper function creates a web form with the desired file
 func generateFileForm(pathToFile string) (*bytes.Buffer, string, error) {
 	body := &bytes.Buffer{}
 	writer := multipart.NewWriter(body)
