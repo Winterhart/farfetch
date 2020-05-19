@@ -77,5 +77,22 @@ Will upload the file `photo.png` to your designated slack channel.
 
 You can use this project as a package in your golang project.
 
+```golang
+package main
+
+import (
+	"os"
+	"github.com/winterhart/farfetch"
+)
+
+func main() {
+	webHook := os.Getenv(`SLACK_HOOK`)
+	slack := farfetch.NewFarfetchImpl(webHook, "", "")
+	slack.SendMessage("This message is from another project using Farfetch! ")
+
+}
+
+```
+
 
 
