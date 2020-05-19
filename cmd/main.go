@@ -15,7 +15,7 @@ const (
 	channelEnv    = `SLACK_CH`
 )
 
-//main - Sample usage of the farfetch package
+//main - Sample usage of the Farfetch package
 func main() {
 
 	hook := os.Getenv(hookEnv)
