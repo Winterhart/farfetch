@@ -71,7 +71,7 @@ Will send `hello` using your slack-bot to your designated slack channel.
 
 ```
 
-Will upload the file `photo.png` to your designated slack channel.
+Will upload the file `photo.png` to your designated slack channel...
 
 #### as a package 
 
